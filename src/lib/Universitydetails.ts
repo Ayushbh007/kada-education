@@ -112,7 +112,20 @@ export const universityPrograms: ReadonlyArray<UniversityProgram> = [
   tag: 'Dynamic Learning',
   cta: 'APPLY NOW',
   href: '/Landingpage/NMIMS'
+ },
+ {
+  id: 'IGNOU-university',
+  university: 'IGNOU',
+  country: 'India',
+  title: 'Global Open Education',
+  level: "Master's Degree",
+  duration: '2 Years',
+  highlights: ['World\'s Largest Open University', 'Highly Affordable Fees', 'Massive Network & Infrastructure'],
+  image: '/Images/IGNOU/ignou_hero.png',
+  badge: 'A++ Grade',
+  tag: 'Open Education',
+  cta: 'APPLY NOW',
+  href: '/Landingpage/IGNOU'
  }
 ];
-
 
