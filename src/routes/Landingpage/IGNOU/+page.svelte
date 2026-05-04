@@ -32,6 +32,7 @@
 	let universityVisible = false;
 	let statsVisible = false;
 	let statsVisible2 = false;
+	let highlightsVisible = false;
 	let admissionVisible = false;
 
 	function inView(node: HTMLElement, params: { callback: (visible: boolean) => void }) {
@@ -57,22 +58,7 @@
 <main class="min-h-screen flex flex-col font-sans">
 	<div class="relative">
 		<HeroSection images={ignouImages} overlayOpacity={40}>
-			<div class="text-center max-w-4xl px-4 animate-fade-in">
-				<div class="inline-block text-[#004b87] bg-white px-6 py-2 rounded-full mb-4 font-bold text-xl shadow-lg animate-bounce uppercase tracking-wider">The People's University</div>
-				<h1 class="text-4xl md:text-6xl font-bold mb-4 animate-slide-up text-white" style="animation-delay: 0.2s">IGNOU</h1>
-				<p class="text-2xl md:text-3xl mb-2 animate-slide-up text-white font-light" style="animation-delay: 0.4s">Indira Gandhi National Open University</p>
-				<p class="text-xl md:text-2xl mb-6 animate-slide-up text-[#cce8ff]" style="animation-delay: 0.6s">Grooming leaders who are thorough professionals and good human beings.</p>
-				
-				<button
-					on:click={openForm}
-					class="text-white px-8 py-3 rounded-full font-bold text-lg transition-all duration-300 inline-block hover:bg-[#003865] hover:scale-105 hover:shadow-2xl animate-pulse"
-					style="background-color: #004b87; animation-delay: 1s"
-					aria-expanded={showForm}
-					aria-controls="contact-modal"
-				>
-					Enquire / Apply
-				</button>
-			</div>
+
 		</HeroSection>
 
 		<div class="pointer-events-none absolute inset-x-0 top-0 z-20">
@@ -192,7 +178,97 @@
 		</div>
 	</section>
 
-	<section class="py-16 bg-white" use:inView={{ callback: (visible) => admissionVisible = visible }}>
+	<!-- Highlights Section -->
+	<section class="py-16 bg-white" use:inView={{ callback: (visible) => highlightsVisible = visible }}>
+		<div class="container mx-auto px-4">
+			<div class="text-center mb-12"
+				class:opacity-0={!highlightsVisible}
+				class:translate-y-10={!highlightsVisible}
+				class:opacity-100={highlightsVisible}
+				class:translate-y-0={highlightsVisible}
+				style="transition: all 0.8s ease-out"
+			>
+				<h2 class="text-3xl md:text-4xl font-bold text-[#004b87] mb-4">University Highlights</h2>
+				<p class="text-gray-600 max-w-2xl mx-auto">Key information about accreditations, courses, and eligibility.</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+				<!-- Accreditation -->
+				<div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-all duration-300 hover:-translate-y-1" class:opacity-0={!highlightsVisible} class:translate-y-5={!highlightsVisible} class:opacity-100={highlightsVisible} class:translate-y-0={highlightsVisible} style="transition: all 0.5s ease-out; transition-delay: 0.1s">
+					<div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
+						<svg class="h-6 w-6 text-[#004b87]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+						</svg>
+					</div>
+					<h3 class="mb-2 font-bold text-gray-900">Accreditation</h3>
+					<p class="font-bold text-[#00a2e8]">UGC-DEB & NAAC A++</p>
+					<p class="text-sm text-gray-600 mt-1">Fully Approved & Accredited</p>
+				</div>
+
+				<!-- Established -->
+				<div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-all duration-300 hover:-translate-y-1" class:opacity-0={!highlightsVisible} class:translate-y-5={!highlightsVisible} class:opacity-100={highlightsVisible} class:translate-y-0={highlightsVisible} style="transition: all 0.5s ease-out; transition-delay: 0.2s">
+					<div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
+						<svg class="h-6 w-6 text-[#004b87]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+						</svg>
+					</div>
+					<h3 class="mb-2 font-bold text-gray-900">Established</h3>
+					<p class="font-bold text-[#00a2e8]">1985</p>
+					<p class="text-sm text-gray-600 mt-1">Decades of Excellence</p>
+				</div>
+
+				<!-- Courses Offered -->
+				<div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-all duration-300 hover:-translate-y-1" class:opacity-0={!highlightsVisible} class:translate-y-5={!highlightsVisible} class:opacity-100={highlightsVisible} class:translate-y-0={highlightsVisible} style="transition: all 0.5s ease-out; transition-delay: 0.3s">
+					<div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
+						<svg class="h-6 w-6 text-[#004b87]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+						</svg>
+					</div>
+					<h3 class="mb-2 font-bold text-gray-900">Courses Offered</h3>
+					<p class="font-bold text-[#00a2e8]">MBA, BBA, M.Com, MA, BA & more</p>
+					<p class="text-sm text-gray-600 mt-1">Wide Range of Programs</p>
+				</div>
+
+				<!-- Eligibility -->
+				<div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-all duration-300 hover:-translate-y-1" class:opacity-0={!highlightsVisible} class:translate-y-5={!highlightsVisible} class:opacity-100={highlightsVisible} class:translate-y-0={highlightsVisible} style="transition: all 0.5s ease-out; transition-delay: 0.4s">
+					<div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
+						<svg class="h-6 w-6 text-[#004b87]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+					</div>
+					<h3 class="mb-2 font-bold text-gray-900">Eligibility</h3>
+					<p class="font-bold text-[#00a2e8]">Min 50% in Graduation</p>
+					<p class="text-sm text-gray-600 mt-1">For MBA (Varies by Course)</p>
+				</div>
+
+				<!-- Certification / Weightage -->
+				<div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-all duration-300 hover:-translate-y-1" class:opacity-0={!highlightsVisible} class:translate-y-5={!highlightsVisible} class:opacity-100={highlightsVisible} class:translate-y-0={highlightsVisible} style="transition: all 0.5s ease-out; transition-delay: 0.5s">
+					<div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
+						<svg class="h-6 w-6 text-[#004b87]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+						</svg>
+					</div>
+					<h3 class="mb-2 font-bold text-gray-900">Certification</h3>
+					<p class="font-bold text-[#00a2e8]">Min 45% Marks</p>
+					<p class="text-sm text-gray-600 mt-1">Required for Some Programs</p>
+				</div>
+
+				<!-- Placement -->
+				<div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-all duration-300 hover:-translate-y-1" class:opacity-0={!highlightsVisible} class:translate-y-5={!highlightsVisible} class:opacity-100={highlightsVisible} class:translate-y-0={highlightsVisible} style="transition: all 0.5s ease-out; transition-delay: 0.6s">
+					<div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
+						<svg class="h-6 w-6 text-[#004b87]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+						</svg>
+					</div>
+					<h3 class="mb-2 font-bold text-gray-900">Placement</h3>
+					<p class="font-bold text-[#00a2e8]">Independent Application</p>
+					<p class="text-sm text-gray-600 mt-1">No Direct Placement Support</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-16 bg-gray-50" use:inView={{ callback: (visible) => admissionVisible = visible }}>
 		<div class="container mx-auto px-4">
 			<div class="text-center max-w-2xl mx-auto mb-12"
 				class:opacity-0={!admissionVisible}

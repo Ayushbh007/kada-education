@@ -27,7 +27,7 @@
     "id": "manipal-jaipur",
     "name": "Manipal Jaipur",
     "location": "Jaipur / Manipal",
-    "fees": "₹37,187 / semester",
+    "fees": "₹45,000 / semester",
     "ranking": "RANKES 73TH UNIVERSITY IN INDIA",
     "accreditation": "NAAC A+, WES, UGC, AICTE",
     "programs": [
@@ -51,7 +51,7 @@
     "id": "sikkim-manipal",
     "name": "Sikkim Manipal",
     "location": "Sikkim / Manipal",
-    "fees": "₹27,500 / semester",
+    "fees": "₹30,000 / semester",
     "ranking": "RANKED #151th  AMONGST RANK BAND",
     "accreditation": "NAAC A+, UGC",
     "programs": [
@@ -100,7 +100,7 @@
     "id": "amity",
     "name": "Amity University",
     "location": "Noida, Uttar Pradesh",
-    "fees": "₹49,750 / semester",
+    "fees": "₹56,300 / semester",
     "ranking": "RANKED #32TH UNIVERSITY IN INDIA",
     "accreditation": "NAAC A+, WES, AICTE",
     "programs": [
@@ -339,5 +339,30 @@
     "onlineClasses": "Recorded Lecture",
     "placementCompanies": "Jio Platforms, HDFC Life, ICICI Prudential, Tata Chemicals, Coal India, Indian Oil, Bharat Electronics",
     "studentRating": "4.0 / 5"
+  },
+  {
+    "id": "ignou",
+    "name": "IGNOU",
+    "location": "New Delhi, India",
+    "fees": "₹66,000 / Total",
+    "ranking": "World's Largest Open University",
+    "accreditation": "UGC-DEB & NAAC A++",
+    "programs": [
+      "MBA",
+      "BBA",
+      "M.Com",
+      "MA",
+      "BA"
+    ],
+    "established": 1985,
+    "placementRate": "N/A",
+    "logo": "/Images/IGNOU/ignou_logo.png",
+    "satisfiedStudent": "N/A",
+    "eligibility": "Min 50% in Graduation",
+    "placementAssistance": "NO",
+    "payAfterPlacement": "NO",
+    "onlineClasses": "Distance Learning",
+    "placementCompanies": "Independent Application",
+    "studentRating": "4.5 / 5"
   }
 ]

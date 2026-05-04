@@ -318,7 +318,7 @@
 						<ul class="mb-4 space-y-2 text-gray-600">
 							<li class="flex items-center">
 								<span class="mr-2" style="color: #edcc13;">•</span>
-								Fees: ₹1,99,000/year
+								Fees: ₹2,07,000/year
 							</li>
 							<li class="flex items-center">
 								<span class="mr-2" style="color: #edcc13;">•</span>

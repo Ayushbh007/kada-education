@@ -232,83 +232,60 @@
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <!-- Engineering Program -->
+        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <!-- Manipal Jaipur -->
           <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
             <div class="h-48 bg-orange-500">
-              <img src="/Images/Manipalimages/manipal02.png" alt="Engineering programs" class="w-full h-full object-cover"/>
+              <img src="/Images/Manipalimages/manipal02.png" alt="Manipal Jaipur" class="w-full h-full object-cover"/>
             </div>
             <div class="p-6">
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">Engineering & Technology</h3>
-              <ul class="space-y-2 text-gray-600 mb-4">
-                <li class="flex items-center">
-                  <span class="text-orange-500 mr-2">•</span>
-                  B.Tech in emerging technologies
-                </li>
-                <li class="flex items-center">
-                  <span class="text-orange-500 mr-2">•</span>
-                  Industry-aligned curriculum
-                </li>
-                <li class="flex items-center">
-                  <span class="text-orange-500 mr-2">•</span>
-                  State-of-the-art laboratories
-                </li>
-              </ul>
-              <button on:click={openForm} class="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition-colors">
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Manipal University Jaipur (MUJ)</h3>
+              <div class="bg-orange-50 rounded-lg p-4 mb-6">
+                <ul class="space-y-3 text-gray-700">
+                  <li class="flex items-center justify-between border-b border-orange-100 pb-2">
+                    <span class="font-medium">Total Fees:</span>
+                    <span class="text-orange-600 font-bold text-lg">₹1,80,000</span>
+                  </li>
+                  <li class="flex items-center justify-between border-b border-orange-100 pb-2">
+                    <span class="font-medium">Annual Fees:</span>
+                    <span class="font-semibold">₹90,000</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span class="font-medium">Semester Fees:</span>
+                    <span class="font-semibold">₹45,000</span>
+                  </li>
+                </ul>
+              </div>
+              <button on:click={openForm} class="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 duration-200">
                 Apply Now
               </button>
             </div>
           </div>
 
-          <!-- Management Program -->
+          <!-- Sikkim Manipal -->
           <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
             <div class="h-48 bg-orange-500">
-              <img src="/Images/Manipalimages/manipal03.png" alt="Management programs" class="w-full h-full object-cover"/>
+              <img src="/Images/Manipalimages/manipal03.png" alt="Sikkim Manipal" class="w-full h-full object-cover"/>
             </div>
             <div class="p-6">
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">Management Studies</h3>
-              <ul class="space-y-2 text-gray-600 mb-4">
-                <li class="flex items-center">
-                  <span class="text-orange-500 mr-2">•</span>
-                  MBA with specializations
-                </li>
-                <li class="flex items-center">
-                  <span class="text-orange-500 mr-2">•</span>
-                  Industry expert faculty
-                </li>
-                <li class="flex items-center">
-                  <span class="text-orange-500 mr-2">•</span>
-                  100% placement assistance
-                </li>
-              </ul>
-              <button on:click={openForm} class="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition-colors">
-                Apply Now
-              </button>
-            </div>
-          </div>
-
-          <!-- Healthcare Program -->
-          <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-            <div class="h-48 bg-orange-500">
-              <img src="/Images/Manipalimages/manipal01.png" alt="Healthcare programs" class="w-full h-full object-cover"/>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">Healthcare Sciences</h3>
-              <ul class="space-y-2 text-gray-600 mb-4">
-                <li class="flex items-center">
-                  <span class="text-orange-500 mr-2">•</span>
-                  Medical & Allied Sciences
-                </li>
-                <li class="flex items-center">
-                  <span class="text-orange-500 mr-2">•</span>
-                  Advanced research facilities
-                </li>
-                <li class="flex items-center">
-                  <span class="text-orange-500 mr-2">•</span>
-                  Global healthcare exposure
-                </li>
-              </ul>
-              <button on:click={openForm} class="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition-colors">
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Sikkim Manipal University (SMU)</h3>
+              <div class="bg-orange-50 rounded-lg p-4 mb-6">
+                <ul class="space-y-3 text-gray-700">
+                  <li class="flex items-center justify-between border-b border-orange-100 pb-2">
+                    <span class="font-medium">Total Fees:</span>
+                    <span class="text-orange-600 font-bold text-lg">₹1,20,000</span>
+                  </li>
+                  <li class="flex items-center justify-between border-b border-orange-100 pb-2">
+                    <span class="font-medium">Annual Fees:</span>
+                    <span class="font-semibold">₹60,000</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span class="font-medium">Semester Fees:</span>
+                    <span class="font-semibold">₹30,000</span>
+                  </li>
+                </ul>
+              </div>
+              <button on:click={openForm} class="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 duration-200">
                 Apply Now
               </button>
             </div>
