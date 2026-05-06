@@ -83,13 +83,14 @@
 					<a href="/Reviews" class="text-gray-400 hover:text-white px-2 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-colors">Reviews</a>
 					<a href="/Faqs" class="text-gray-400 hover:text-white px-2 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-colors">FAQs</a>
 					<a href="/Ourwhy" class="text-gray-400 hover:text-white px-2 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-colors">Our Why</a>
+					<a href="/Legal" class="text-gray-400 hover:text-white px-2 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-colors">Legal</a>
 				</nav>
 			</div>
 
 			<!-- Copyright/Legal - Centered below navigation -->
 			<div class="text-center space-y-1">
 				<p class="text-sm text-gray-400">Typeface</p>
-				<p class="text-sm text-gray-400">© 2015 <a href="/privacy" class="hover:text-orange-500 transition-colors">KadaEducation</a> <a href="/imprint" class="hover:text-orange-500 transition-colors">Limited</a></p>
+				<p class="text-sm text-gray-400">© 2015 <a href="/Legal" class="hover:text-orange-500 transition-colors">Kada Education</a> <a href="/Legal" class="hover:text-orange-500 transition-colors">Legal Policy</a></p>
 			</div>
 		</div>
 	</div>

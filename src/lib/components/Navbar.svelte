@@ -84,6 +84,9 @@
 				<a href="/Ourwhy" class="text-white transition-colors duration-200 hover:text-gray-300">
 					Our Why
 				</a>
+				<a href="/Legal" class="text-white transition-colors duration-200 hover:text-gray-300">
+					Legal
+				</a>
 			</div>
 
 			<!-- Desktop Auth Button -->
@@ -142,6 +145,7 @@
 					<a href="/Reviews" class="block py-2 text-white hover:text-gray-300"> Reviews </a>
 					<a href="/Faqs" class="block py-2 text-white hover:text-gray-300"> FAQs </a>
 					<a href="/Ourwhy" class="block py-2 text-white hover:text-gray-300"> Our Why </a>
+					<a href="/Legal" class="block py-2 text-white hover:text-gray-300"> Legal </a>
 					<div class="mt-3 border-t border-gray-800 pt-3">
 						<button
 							on:click={openForm}
