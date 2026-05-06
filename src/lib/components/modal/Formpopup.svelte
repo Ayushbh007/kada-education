@@ -162,10 +162,9 @@
 
 <!-- Modal Overlay -->
 <div
-	class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm transition-all duration-300"
+	class="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm transition-all duration-300"
 	class:opacity-0={!modalVisible}
 	class:opacity-100={modalVisible}
-	on:click={handleOverlayClick}
 	on:keydown={handleKeydown}
 	role="dialog"
 	aria-modal="true"
@@ -173,9 +172,13 @@
 	tabindex="-1"
 >
 	<!-- Modal Content Container -->
-	<div class="w-full max-w-[95vw] sm:max-w-lg mx-auto py-2 sm:py-6 flex flex-col max-h-[95vh]">
+	<div 
+		class="flex min-h-full items-center justify-center py-6 px-4"
+		on:click={handleOverlayClick}
+		role="presentation"
+	>
 		<div
-			class="relative w-full rounded-3xl border border-gray-700/50 bg-gradient-to-br from-gray-900 via-gray-800 to-black shadow-2xl max-h-full overflow-y-auto px-4 transform transition-all duration-300 flex-shrink"
+			class="relative w-full max-w-[95vw] sm:max-w-lg rounded-3xl border border-gray-700/50 bg-gradient-to-br from-gray-900 via-gray-800 to-black shadow-2xl px-4 transform transition-all duration-300"
 			class:scale-95={!modalVisible}
 			class:scale-100={modalVisible}
 			class:translate-y-4={!modalVisible}
@@ -384,8 +387,7 @@
 <!-- Confirmation Modal -->
 {#if showConfirmation}
 	<div
-		class="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm transition-all duration-300"
-		on:click={handleConfirmationOverlayClick}
+		class="fixed inset-0 z-[60] overflow-y-auto bg-black/60 backdrop-blur-sm transition-all duration-300"
 		on:keydown={handleKeydown}
 		role="dialog"
 		aria-modal="true"
@@ -393,9 +395,13 @@
 		tabindex="-1"
 	>
 		<!-- Modal Content Container -->
-		<div class="w-full max-w-[90vw] sm:max-w-lg mx-auto py-4 sm:py-6">
+		<div 
+			class="flex min-h-full items-center justify-center py-6 px-4"
+			on:click={handleConfirmationOverlayClick}
+			role="presentation"
+		>
 			<div
-				class="relative w-full rounded-3xl border border-gray-700/50 bg-gradient-to-br from-gray-900 via-gray-800 to-black shadow-2xl max-h-[80vh] sm:max-h-[90vh] overflow-y-auto px-4 transform transition-all duration-300 scale-100"
+				class="relative w-full max-w-[95vw] sm:max-w-lg rounded-3xl border border-gray-700/50 bg-gradient-to-br from-gray-900 via-gray-800 to-black shadow-2xl px-4 transform transition-all duration-300 scale-100"
 				role="document"
 			>
 				<!-- Close Button -->
