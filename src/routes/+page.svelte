@@ -21,6 +21,7 @@
 	}
 
 	const heroImages = [
+        '/Images/logos/kadaimage05.PNG',
         '/Images/amity/kada_education02.png',
         '/Images/Manipalimages/manipal05.jpg',
         '/Images/shoolini/shoolini01.png',
