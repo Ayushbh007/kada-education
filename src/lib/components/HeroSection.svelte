@@ -328,7 +328,6 @@
 		min-height: 500px;
 		display: flex;
 		align-items: center;
-		overflow: hidden;
 	}
 
 	.hero-photo {
@@ -375,7 +374,7 @@
 	}
 
 	.float-card-mid {
-		top: 140px;
+		top: 190px;
 		left: -30px;
 		animation-delay: 2s;
 	}
