@@ -162,7 +162,7 @@
 
 <!-- Modal Overlay -->
 <div
-	class="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm transition-all duration-300"
+	class="fixed inset-0 overflow-y-auto bg-black/60 backdrop-blur-sm transition-all duration-300" style="z-index: 1100;"
 	class:opacity-0={!modalVisible}
 	class:opacity-100={modalVisible}
 	on:keydown={handleKeydown}
@@ -387,7 +387,7 @@
 <!-- Confirmation Modal -->
 {#if showConfirmation}
 	<div
-		class="fixed inset-0 z-[60] overflow-y-auto bg-black/60 backdrop-blur-sm transition-all duration-300"
+		class="fixed inset-0 overflow-y-auto bg-black/60 backdrop-blur-sm transition-all duration-300" style="z-index: 1200;"
 		on:keydown={handleKeydown}
 		role="dialog"
 		aria-modal="true"
