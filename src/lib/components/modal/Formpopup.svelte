@@ -1,4 +1,4 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 
 	const dispatch = createEventDispatcher<{
@@ -157,440 +157,295 @@
 		closeModal();
 	}
 </script>
-
 <svelte:window on:keydown={handleKeydown} />
 
 <!-- Modal Overlay -->
 <div
-	class="fixed inset-0 overflow-y-auto bg-black/60 backdrop-blur-sm transition-all duration-300" style="z-index: 1100;"
+	class="fixed inset-0 overflow-y-auto bg-slate-900/50 backdrop-blur-md transition-all duration-500 flex items-center justify-center p-4 sm:p-6 z-[1100]"
 	class:opacity-0={!modalVisible}
 	class:opacity-100={modalVisible}
-	on:keydown={handleKeydown}
+	class:pointer-events-none={!modalVisible}
+	on:click={handleOverlayClick}
 	role="dialog"
 	aria-modal="true"
 	aria-labelledby="form-title"
-	tabindex="-1"
 >
-	<!-- Modal Content Container -->
-	<div 
-		class="flex min-h-full items-center justify-center py-6 px-4"
-		on:click={handleOverlayClick}
-		role="presentation"
+	<!-- Premium Modal Container (Split Layout) -->
+	<div
+		class="relative w-full max-w-4xl flex flex-col md:flex-row bg-white rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] transform transition-all duration-500"
+		class:scale-95={!modalVisible}
+		class:scale-100={modalVisible}
+		class:translate-y-8={!modalVisible}
+		class:translate-y-0={modalVisible}
+		role="document"
 	>
-		<div
-			class="relative w-full max-w-[95vw] sm:max-w-lg rounded-3xl border border-gray-700/50 bg-gradient-to-br from-gray-900 via-gray-800 to-black shadow-2xl px-4 transform transition-all duration-300"
-			class:scale-95={!modalVisible}
-			class:scale-100={modalVisible}
-			class:translate-y-4={!modalVisible}
-			class:translate-y-0={modalVisible}
-			role="document"
+		<!-- Close Button (Absolute Top Right) -->
+		<button
+			on:click={closeModal}
+			class="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 p-2.5 bg-gray-100/50 hover:bg-gray-200 text-gray-500 hover:text-gray-800 backdrop-blur-sm rounded-full transition-all duration-300 hover:rotate-90 focus:outline-none"
+			aria-label="Close form"
 		>
-			<!-- Close Button -->
-			<button
-				on:click={closeModal}
-				class="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 text-gray-400 transition-all duration-300 hover:text-white hover:scale-110 hover:rotate-90 rounded-full p-1 hover:bg-gray-800/50"
-				aria-label="Close form"
-			>
-				<svg class="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M6 18L18 6M6 6l12 12"
-					/>
-				</svg>
-			</button>
+			<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+			</svg>
+		</button>
 
-			<!-- Form Header -->
-			<div class="relative px-4 sm:px-6 py-6 sm:py-8">
-				<!-- Animated background gradient -->
-				<div class="absolute inset-0 bg-gradient-to-r from-[#831b33]/10 via-transparent to-[#831b33]/10 rounded-t-3xl"></div>
-
-				<!-- Header icon -->
-				<div class="relative flex justify-center mb-4">
-					<div class="w-16 h-16 bg-gradient-to-br from-[#831b33] to-[#a62b4a] rounded-full flex items-center justify-center shadow-lg animate-pulse">
-						<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-						</svg>
-					</div>
-				</div>
-
-				<h2 id="form-title" class="text-center mb-3 text-2xl sm:text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Get in Touch</h2>
-				<p class="text-center text-sm text-gray-400">Fill out the form below and we'll get back to you soon.</p>
-
-				<!-- Progress indicator -->
-				<div class="flex justify-center mt-4 space-x-2">
-					<div class="w-2 h-2 rounded-full bg-[#831b33] transition-all duration-300"></div>
-					<div class="w-2 h-2 rounded-full bg-gray-600 transition-all duration-300"></div>
-					<div class="w-2 h-2 rounded-full bg-gray-600 transition-all duration-300"></div>
-				</div>
+		<!-- Left Side: Visual / Value Prop (Hidden on small mobile, visible on sm+) -->
+		<div class="relative hidden sm:flex md:w-5/12 bg-gradient-to-br from-[#f97316] via-[#ea580c] to-[#e11d48] p-10 flex-col justify-between overflow-hidden text-white">
+			<!-- Abstract Background Elements -->
+			<div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+				<div class="absolute -top-24 -left-24 w-64 h-64 bg-white/10 rounded-full blur-2xl"></div>
+				<div class="absolute top-1/2 right-[-20%] w-72 h-72 bg-rose-500/30 rounded-full blur-3xl mix-blend-multiply"></div>
+				<div class="absolute bottom-[-10%] left-[-10%] w-80 h-80 bg-orange-400/30 rounded-full blur-3xl mix-blend-overlay"></div>
 			</div>
 
-			<!-- Form -->
-			<form on:submit|preventDefault={handleSubmit} class="space-y-5 px-4 sm:px-6 py-4 sm:py-6">
-				<!-- Name Field -->
-				<div class="group">
-					<label for="name" class="mb-2 block text-sm font-medium text-white flex items-center gap-2">
-						<svg class="w-4 h-4 text-[#831b33]" fill="currentColor" viewBox="0 0 24 24">
-							<path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+			<div class="relative z-10">
+				<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-sm font-semibold mb-8">
+					<span class="w-2 h-2 rounded-full bg-green-300 animate-pulse"></span>
+					Available for Counseling
+				</div>
+				<h2 class="text-3xl md:text-4xl font-extrabold leading-tight mb-4 tracking-tight">
+					Accelerate Your<br/>
+					<span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-100 to-white">Career Growth</span>
+				</h2>
+				<p class="text-orange-50/90 text-lg leading-relaxed mb-8">
+					Join 10,000+ students who found their dream university through our expert guidance.
+				</p>
+			</div>
+
+			<div class="relative z-10 space-y-5">
+				<div class="flex items-center gap-4">
+					<div class="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
+						<svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
 						</svg>
-						Full Name *
-					</label>
-					<div class="relative">
-						<input
-							id="name"
-							type="text"
-							bind:value={formData.name}
-							class="w-full rounded-xl border-2 border-gray-700 bg-gray-900/50 backdrop-blur-sm px-4 py-3 text-white placeholder-gray-400 transition-all duration-300 focus:border-[#831b33] focus:ring-2 focus:ring-[#831b33]/20 focus:outline-none hover:border-gray-600"
-							placeholder="Enter your full name"
-							class:border-red-500={errors.name}
-							class:border-[#831b33]={fieldFocus.name}
-						/>
-						{#if formData.name}
-							<div class="absolute right-3 top-1/2 -translate-y-1/2 text-green-400">
-								<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-									<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-								</svg>
-							</div>
-						{/if}
 					</div>
+					<div>
+						<h4 class="font-bold text-white">Top Universities</h4>
+						<p class="text-sm text-orange-100/80">Direct tie-ups with premium institutes</p>
+					</div>
+				</div>
+				<div class="flex items-center gap-4">
+					<div class="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
+						<svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+						</svg>
+					</div>
+					<div>
+						<h4 class="font-bold text-white">100% Free Counseling</h4>
+						<p class="text-sm text-orange-100/80">No hidden charges, pure guidance</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Right Side: Form -->
+		<div class="w-full md:w-7/12 p-8 sm:p-10 md:p-12 bg-white relative">
+			<!-- Mobile Header (Only shows when left panel is hidden on ultra-small screens) -->
+			<div class="sm:hidden mb-8 text-center">
+				<h2 class="text-2xl font-bold text-gray-900 mb-2">Get in Touch</h2>
+				<p class="text-gray-500 text-sm">Expert guidance is just a click away.</p>
+			</div>
+
+			<div class="mb-8 hidden sm:block">
+				<h3 class="text-2xl font-bold text-gray-900 mb-2">Book Your Free Session</h3>
+				<p class="text-gray-500">Fill in your details and we'll reach out to you.</p>
+			</div>
+
+			<form on:submit|preventDefault={handleSubmit} class="space-y-6">
+				<!-- Custom Floating Label Input: Name -->
+				<div class="relative group">
+					<input
+						id="name"
+						type="text"
+						bind:value={formData.name}
+						class="peer w-full h-14 bg-gray-50 text-gray-900 placeholder-transparent border-2 border-gray-100 rounded-xl px-4 pt-4 pb-2 focus:outline-none focus:border-orange-500 focus:bg-white transition-all duration-300"
+						placeholder="Full Name"
+						class:border-red-500={errors.name}
+					/>
+					<label
+						for="name"
+						class="absolute left-4 top-2 text-xs font-semibold text-gray-400 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-placeholder-shown:font-normal peer-focus:top-2 peer-focus:text-xs peer-focus:font-semibold peer-focus:text-orange-500"
+					>
+						Full Name
+					</label>
 					{#if errors.name}
-						<p class="mt-2 text-sm text-red-400 flex items-center gap-1 animate-pulse">
-							<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-							</svg>
+						<div class="absolute -bottom-5 left-1 text-xs text-red-500 font-medium flex items-center gap-1 animate-fade-in">
+							<svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
 							{errors.name}
-						</p>
+						</div>
 					{/if}
 				</div>
 
-				<!-- Email Field -->
-				<div class="group">
-					<label for="email" class="mb-2 block text-sm font-medium text-white flex items-center gap-2">
-						<svg class="w-4 h-4 text-[#831b33]" fill="currentColor" viewBox="0 0 24 24">
-							<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-						</svg>
-						Email Address *
+				<!-- Custom Floating Label Input: Email -->
+				<div class="relative group mt-8">
+					<input
+						id="email"
+						type="email"
+						bind:value={formData.email}
+						class="peer w-full h-14 bg-gray-50 text-gray-900 placeholder-transparent border-2 border-gray-100 rounded-xl px-4 pt-4 pb-2 focus:outline-none focus:border-orange-500 focus:bg-white transition-all duration-300"
+						placeholder="Email Address"
+						class:border-red-500={errors.email}
+					/>
+					<label
+						for="email"
+						class="absolute left-4 top-2 text-xs font-semibold text-gray-400 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-placeholder-shown:font-normal peer-focus:top-2 peer-focus:text-xs peer-focus:font-semibold peer-focus:text-orange-500"
+					>
+						Email Address
 					</label>
-					<div class="relative">
-						<input
-							id="email"
-							type="email"
-							bind:value={formData.email}
-							class="w-full rounded-xl border-2 border-gray-700 bg-gray-900/50 backdrop-blur-sm px-4 py-3 text-white placeholder-gray-400 transition-all duration-300 focus:border-[#831b33] focus:ring-2 focus:ring-[#831b33]/20 focus:outline-none hover:border-gray-600"
-							placeholder="Enter your email address"
-							class:border-red-500={errors.email}
-							class:border-[#831b33]={fieldFocus.email}
-						/>
-						{#if formData.email && isValidEmail(formData.email)}
-							<div class="absolute right-3 top-1/2 -translate-y-1/2 text-green-400">
-								<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-									<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-								</svg>
-							</div>
-						{/if}
-					</div>
 					{#if errors.email}
-						<p class="mt-2 text-sm text-red-400 flex items-center gap-1 animate-pulse">
-							<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-							</svg>
+						<div class="absolute -bottom-5 left-1 text-xs text-red-500 font-medium flex items-center gap-1 animate-fade-in">
+							<svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
 							{errors.email}
-						</p>
+						</div>
 					{/if}
 				</div>
 
-				<!-- Contact Number Field -->
-				<div class="group">
-					<label for="contactNo" class="mb-2 block text-sm font-medium text-white flex items-center gap-2">
-						<svg class="w-4 h-4 text-[#831b33]" fill="currentColor" viewBox="0 0 24 24">
-							<path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-						</svg>
-						Contact Number *
+				<!-- Custom Floating Label Input: Contact Number -->
+				<div class="relative group mt-8">
+					<input
+						id="contactNo"
+						type="tel"
+						bind:value={formData.contactNo}
+						class="peer w-full h-14 bg-gray-50 text-gray-900 placeholder-transparent border-2 border-gray-100 rounded-xl px-4 pt-4 pb-2 focus:outline-none focus:border-orange-500 focus:bg-white transition-all duration-300"
+						placeholder="Contact Number"
+						class:border-red-500={errors.contactNo}
+					/>
+					<label
+						for="contactNo"
+						class="absolute left-4 top-2 text-xs font-semibold text-gray-400 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-placeholder-shown:font-normal peer-focus:top-2 peer-focus:text-xs peer-focus:font-semibold peer-focus:text-orange-500"
+					>
+						Contact Number
 					</label>
-					<div class="relative">
-						<input
-							id="contactNo"
-							type="tel"
-							bind:value={formData.contactNo}
-							class="w-full rounded-xl border-2 border-gray-700 bg-gray-900/50 backdrop-blur-sm px-4 py-3 text-white placeholder-gray-400 transition-all duration-300 focus:border-[#831b33] focus:ring-2 focus:ring-[#831b33]/20 focus:outline-none hover:border-gray-600"
-							placeholder="Enter your contact number"
-							class:border-red-500={errors.contactNo}
-							class:border-[#831b33]={fieldFocus.contactNo}
-						/>
-						{#if formData.contactNo && isValidPhone(formData.contactNo)}
-							<div class="absolute right-3 top-1/2 -translate-y-1/2 text-green-400">
-								<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-									<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-								</svg>
-							</div>
-						{/if}
-					</div>
 					{#if errors.contactNo}
-						<p class="mt-2 text-sm text-red-400 flex items-center gap-1 animate-pulse">
-							<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-							</svg>
+						<div class="absolute -bottom-5 left-1 text-xs text-red-500 font-medium flex items-center gap-1 animate-fade-in">
+							<svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
 							{errors.contactNo}
-						</p>
+						</div>
 					{/if}
 				</div>
 
-				<!-- Submit Button -->
+				<!-- Premium Submit Button -->
 				<div class="pt-6">
 					<button
 						type="submit"
 						disabled={isSubmitting}
-						class="group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-[#831b33] to-[#a62b4a] px-6 py-4 font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-[#831b33]/25 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
+						class="relative w-full h-14 overflow-hidden rounded-xl bg-gradient-to-r from-orange-500 to-rose-500 p-[2px] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_10px_40px_-10px_rgba(249,115,22,0.8)] focus:outline-none focus:ring-4 focus:ring-orange-500/30 disabled:opacity-70 disabled:hover:scale-100 disabled:hover:shadow-none group"
 					>
-						<!-- Animated background -->
-						<div class="absolute inset-0 bg-gradient-to-r from-[#a62b4a] to-[#831b33] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-
-						<!-- Button content -->
-						<div class="relative flex items-center justify-center gap-3">
+						<!-- Inner container for button content -->
+						<div class="relative flex h-full w-full items-center justify-center gap-3 rounded-[10px] bg-gradient-to-r from-orange-500 to-rose-500 transition-all duration-300 group-hover:from-orange-400 group-hover:to-rose-400">
 							{#if isSubmitting}
-								<div class="relative">
-									<svg class="h-5 w-5 animate-spin text-white" fill="none" viewBox="0 0 24 24">
-										<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-										<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-									</svg>
-									<!-- Pulsing ring -->
-									<div class="absolute inset-0 rounded-full border-2 border-white/30 animate-ping"></div>
-								</div>
-								<span class="animate-pulse">Submitting...</span>
-							{:else}
-								<svg class="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+								<svg class="h-5 w-5 animate-spin text-white" fill="none" viewBox="0 0 24 24">
+									<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+									<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
 								</svg>
-								<span>Contact Us</span>
+								<span class="font-bold text-white tracking-wide">Processing...</span>
+							{:else}
+								<span class="font-bold text-white tracking-wide text-lg">Talk to an Expert</span>
+								<svg class="w-5 h-5 text-white transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+								</svg>
 							{/if}
 						</div>
-
-						<!-- Shine effect -->
-						<div class="absolute inset-0 -top-1 -left-1 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
 					</button>
-
-					<!-- Success particles (shown during submission) -->
-					{#if isSubmitting}
-						<div class="flex justify-center mt-4 space-x-1">
-							<div class="w-2 h-2 bg-[#831b33] rounded-full animate-bounce" style="animation-delay: 0ms"></div>
-							<div class="w-2 h-2 bg-[#831b33] rounded-full animate-bounce" style="animation-delay: 150ms"></div>
-							<div class="w-2 h-2 bg-[#831b33] rounded-full animate-bounce" style="animation-delay: 300ms"></div>
-						</div>
-					{/if}
 				</div>
+				
+				<p class="text-center text-xs text-gray-400 mt-6 flex items-center justify-center gap-1">
+					<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+					Your information is 100% secure
+				</p>
 			</form>
 		</div>
 	</div>
 </div>
 
-<!-- Confirmation Modal -->
+<!-- Premium Confirmation Modal -->
 {#if showConfirmation}
 	<div
-		class="fixed inset-0 overflow-y-auto bg-black/60 backdrop-blur-sm transition-all duration-300" style="z-index: 1200;"
+		class="fixed inset-0 overflow-y-auto bg-slate-900/60 backdrop-blur-md transition-all duration-500 flex items-center justify-center p-4 z-[1200]"
+		on:click={handleConfirmationOverlayClick}
 		on:keydown={handleKeydown}
 		role="dialog"
 		aria-modal="true"
-		aria-labelledby="confirmation-title"
 		tabindex="-1"
 	>
-		<!-- Modal Content Container -->
-		<div 
-			class="flex min-h-full items-center justify-center py-6 px-4"
-			on:click={handleConfirmationOverlayClick}
-			role="presentation"
+		<div
+			class="relative w-full max-w-sm rounded-[2rem] bg-white shadow-[0_20px_50px_rgba(0,0,0,0.3)] p-10 text-center transform transition-all duration-500 animate-modal-in overflow-hidden"
+			role="document"
 		>
-			<div
-				class="relative w-full max-w-[95vw] sm:max-w-lg rounded-3xl border border-gray-700/50 bg-gradient-to-br from-gray-900 via-gray-800 to-black shadow-2xl px-4 transform transition-all duration-300 scale-100"
-				role="document"
-			>
-				<!-- Close Button -->
-				<button
-					on:click={closeConfirmation}
-					class="absolute top-3 right-3 z-10 text-gray-400 transition-all duration-300 hover:text-white hover:scale-110 hover:rotate-90 rounded-full p-1 hover:bg-gray-800/50"
-					aria-label="Close confirmation"
-				>
-					<svg class="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-					</svg>
-				</button>
+			<!-- Confetti / Abstract Background -->
+			<div class="absolute -top-20 -right-20 w-40 h-40 bg-green-400/20 rounded-full blur-2xl"></div>
+			<div class="absolute -bottom-20 -left-20 w-40 h-40 bg-orange-400/20 rounded-full blur-2xl"></div>
 
-				<!-- Confirmation Content -->
-				<div class="px-6 py-8 text-center">
-					<!-- Animated success icon -->
-					<div class="relative mx-auto mb-6 flex h-20 w-20 items-center justify-center">
-						<div class="absolute inset-0 rounded-full bg-gradient-to-r from-green-400 to-green-600 animate-ping opacity-20"></div>
-						<div class="relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-green-600 shadow-lg animate-bounce">
-							<svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-							</svg>
-						</div>
-					</div>
-
-					<!-- Animated title -->
-					<h2 id="confirmation-title" class="mb-4 text-2xl sm:text-3xl font-bold bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent animate-pulse">
-						Form Submitted Successfully!
-					</h2>
-
-					<!-- Animated message -->
-					<p class="mb-6 text-gray-300 leading-relaxed animate-fade-in" style="animation-delay: 0.3s">
-						Thank you for your submission. We'll get back to you soon with more information about our programs.
-					</p>
-
-					<!-- Animated particles -->
-					<div class="flex justify-center mb-6 space-x-2">
-						<div class="w-3 h-3 bg-green-400 rounded-full animate-bounce" style="animation-delay: 0ms"></div>
-						<div class="w-3 h-3 bg-green-500 rounded-full animate-bounce" style="animation-delay: 150ms"></div>
-						<div class="w-3 h-3 bg-green-600 rounded-full animate-bounce" style="animation-delay: 300ms"></div>
-						<div class="w-3 h-3 bg-green-500 rounded-full animate-bounce" style="animation-delay: 450ms"></div>
-						<div class="w-3 h-3 bg-green-400 rounded-full animate-bounce" style="animation-delay: 600ms"></div>
-					</div>
-
-					<!-- Action Buttons -->
-					<div class="flex flex-col gap-4 sm:flex-row">
-						<button
-							on:click={closeConfirmation}
-							class="flex-1 rounded-xl border-2 border-gray-700 bg-gray-900/50 backdrop-blur-sm px-6 py-3 font-medium text-white transition-all duration-300 hover:bg-gray-800 hover:border-gray-600 hover:scale-105"
-						>
-							Submit Another Form
-						</button>
-						<button
-							on:click={closeFormAfterConfirmation}
-							class="flex-1 rounded-xl bg-gradient-to-r from-[#831b33] to-[#a62b4a] px-6 py-3 font-medium text-white transition-all duration-300 hover:shadow-lg hover:shadow-[#831b33]/25 hover:scale-105"
-						>
-							Close
-						</button>
+			<div class="relative z-10">
+				<!-- Success Icon Animation -->
+				<div class="mx-auto mb-6 flex h-24 w-24 items-center justify-center relative">
+					<div class="absolute inset-0 rounded-full bg-green-100 animate-ping opacity-50"></div>
+					<div class="relative flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-tr from-green-400 to-green-500 shadow-[0_10px_25px_rgba(34,197,94,0.4)]">
+						<svg class="h-10 w-10 text-white animate-success-check" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+						</svg>
 					</div>
 				</div>
+
+				<h3 class="text-2xl font-extrabold text-gray-900 mb-3 tracking-tight">You're All Set!</h3>
+				<p class="text-gray-500 mb-8 leading-relaxed">
+					Thank you for reaching out. Our expert counselors will contact you shortly to guide your journey.
+				</p>
+
+				<button
+					on:click={closeFormAfterConfirmation}
+					class="w-full h-14 rounded-xl bg-gray-900 px-6 font-bold text-white transition-all duration-300 hover:bg-gray-800 hover:shadow-xl hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-gray-900/30"
+				>
+					Return to Site
+				</button>
 			</div>
 		</div>
 	</div>
-<style lang="postcss">
-	:global(.navbar-wrapper .bg-orange-500) { background-color: #831b33 !important; }
-	:global(.navbar-wrapper .hover\:bg-orange-600:hover) { background-color: #691529 !important; }
-	:global(.navbar-wrapper .text-orange-500) { color: #831b33 !important; }
-	:global(.footer-wrapper .bg-orange-500) { background-color: #831b33 !important; }
+{/if}
 
-	/* Modal animations */
+<style>
 	@keyframes modalSlideIn {
-		from {
-			opacity: 0;
-			transform: scale(0.9) translateY(-20px);
-		}
-		to {
-			opacity: 1;
-			transform: scale(1) translateY(0);
-		}
-	}
-
-	@keyframes modalSlideOut {
-		from {
-			opacity: 1;
-			transform: scale(1) translateY(0);
-		}
-		to {
-			opacity: 0;
-			transform: scale(0.9) translateY(-20px);
-		}
-	}
-
-	@keyframes inputFocusGlow {
-		0%, 100% {
-			box-shadow: 0 0 0 0 rgba(131, 27, 51, 0.4);
-		}
-		50% {
-			box-shadow: 0 0 0 4px rgba(131, 27, 51, 0.1);
-		}
-	}
-
-	@keyframes successPulse {
-		0%, 100% {
-			transform: scale(1);
-			opacity: 1;
-		}
-		50% {
-			transform: scale(1.05);
-			opacity: 0.8;
-		}
-	}
-
-	@keyframes fadeIn {
-		from { opacity: 0; }
-		to { opacity: 1; }
-	}
-
-	@keyframes shine {
-		0% { transform: translateX(-100%) skewX(-12deg); }
-		100% { transform: translateX(200%) skewX(-12deg); }
-	}
-
-	@keyframes floatUp {
 		0% {
-			transform: translateY(0px);
-			opacity: 1;
+			opacity: 0;
+			transform: scale(0.9) translateY(20px);
 		}
 		100% {
-			transform: translateY(-20px);
-			opacity: 0;
+			opacity: 1;
+			transform: scale(1) translateY(0);
 		}
 	}
 
-	/* Apply animations */
+	@keyframes fade-in {
+		0% { opacity: 0; transform: translateY(-5px); }
+		100% { opacity: 1; transform: translateY(0); }
+	}
+
+	@keyframes success-check {
+		0% { transform: scale(0); }
+		50% { transform: scale(1.2); }
+		100% { transform: scale(1); }
+	}
+
 	.animate-modal-in {
-		animation: modalSlideIn 0.3s ease-out;
-	}
-
-	.animate-modal-out {
-		animation: modalSlideOut 0.3s ease-in;
-	}
-
-	.animate-focus-glow {
-		animation: inputFocusGlow 2s infinite;
-	}
-
-	.animate-success-pulse {
-		animation: successPulse 2s infinite;
+		animation: modalSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 	}
 
 	.animate-fade-in {
-		animation: fadeIn 0.6s ease-out;
+		animation: fade-in 0.3s ease-out forwards;
 	}
 
-	.animate-float-up {
-		animation: floatUp 1s ease-out forwards;
+	.animate-success-check {
+		animation: success-check 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 	}
 
-	.shine-effect {
-		animation: shine 1s ease-in-out;
-	}
-
-	/* Enhanced focus states */
-	input:focus {
-		animation: inputFocusGlow 2s infinite;
-	}
-
-	/* Smooth transitions for all interactive elements */
-	button, input, label {
-		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-	}
-
-	/* Custom scrollbar for modal */
-	::-webkit-scrollbar {
-		width: 6px;
-	}
-
-	::-webkit-scrollbar-track {
-		background: rgba(255, 255, 255, 0.1);
-		border-radius: 3px;
-	}
-
-	::-webkit-scrollbar-thumb {
-		background: rgba(131, 27, 51, 0.5);
-		border-radius: 3px;
-	}
-
-	::-webkit-scrollbar-thumb:hover {
-		background: rgba(131, 27, 51, 0.7);
+	/* Optional: Smooth autofill styles */
+	input:-webkit-autofill,
+	input:-webkit-autofill:hover, 
+	input:-webkit-autofill:focus, 
+	input:-webkit-autofill:active{
+		-webkit-box-shadow: 0 0 0 30px white inset !important;
+		-webkit-text-fill-color: #111827 !important;
+		transition: background-color 5000s ease-in-out 0s;
 	}
 </style>
-{/if}

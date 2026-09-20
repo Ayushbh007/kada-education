@@ -1,12 +1,12 @@
 <script lang="ts">
-    import { Navbar, HeroSection, Footer, Marquee, UniversityCards } from '$components';
+    import { Navbar, HomeHeroSection, Footer, Marquee, UniversityCards } from '$components';
 </script>
 
 <!-- Navbar (fixed, always on top) -->
 <Navbar />
 
 <!-- Hero Section -->
-<HeroSection />
+<HomeHeroSection />
 
 <!-- Partners Marquee -->
 <Marquee />
