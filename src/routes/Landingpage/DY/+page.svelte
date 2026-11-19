@@ -855,7 +855,6 @@
 {#if showForm}
 	<Formpopup
 		bind:this={formPopup}
-		autoOpen={false}
 		on:close={closeForm}
 		on:submit={handleFormSubmit}
 	/>

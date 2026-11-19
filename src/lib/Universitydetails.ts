@@ -161,5 +161,45 @@ export const universityPrograms: ReadonlyArray<UniversityProgram> = [
 		tag: 'Govt Recognized',
 		cta: 'Explore IGNOU',
 		href: '/Landingpage/IGNOU'
+	},
+	{
+		id: 'graphic-era-university',
+		university: 'Graphic Era University',
+		logo: '/Images/logos/graphic-era-logo.png',
+		country: 'India',
+		title: 'Online Degree Programs',
+		programsOffered: 'Online MBA, MCA, BBA, BCA & B.Com (Hons)',
+		level: "Master's Degree",
+		duration: '2-3 Years',
+		highlights: [
+			'NAAC A+ & NIRF Rank 48 University',
+			'1st & Only Online UGC Univ in UK',
+			'Highest Package up to ₹84.88 LPA'
+		],
+		image: '/Images/GraphicEra/slider1.png',
+		badge: 'NAAC A+ Grade',
+		tag: 'NIRF Rank 48',
+		cta: 'Explore Graphic Era',
+		href: '/Landingpage/GraphicEra'
+	},
+	{
+		id: 'gla-university',
+		university: 'GLA University',
+		logo: '/Images/logos/gla-logo.png',
+		country: 'India',
+		title: 'Online Degree & Certifications',
+		programsOffered: 'Online MBA, MCA, BBA, BCA, B.Com & Certifications',
+		level: "Master's Degree",
+		duration: '2-3 Years',
+		highlights: [
+			'NAAC A+ Accredited (3.46 CGPA)',
+			'Highest Package ₹60 LPA (Microsoft)',
+			'UGC 12B Status & WES Recognized'
+		],
+		image: '/Images/GLA/banner1.webp',
+		badge: 'NAAC A+ Grade',
+		tag: '₹60 LPA Microsoft',
+		cta: 'Explore GLA Online',
+		href: '/Landingpage/GLA'
 	}
 ];

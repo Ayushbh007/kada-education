@@ -11,7 +11,7 @@
 	import { onMount, tick } from 'svelte';
 
 	let showForm = false;
-	let formPopup: { openModal?: () => void; closeModal?: () => void } | null = null;
+	let formPopup: any = null;
 
 	async function openForm() {
 		showForm = true;
@@ -829,7 +829,6 @@
 {#if showForm}
 	<Formpopup
 		bind:this={formPopup}
-		autoOpen={false}
 		on:close={closeForm}
 		on:submit={handleFormSubmit}
 	/>

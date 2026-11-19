@@ -364,5 +364,56 @@
     "onlineClasses": "Distance Learning",
     "placementCompanies": "Independent Application",
     "studentRating": "3.0 / 5"
+  },
+  {
+    "id": "graphic-era",
+    "name": "Graphic Era University",
+    "location": "Dehradun, Uttarakhand",
+    "fees": "₹17,500 / semester",
+    "ranking": "NIRF RANK 48 IN UNIVERSITY CATEGORY",
+    "accreditation": "NAAC A+, UGC-DEB, AICTE, AIU",
+    "programs": [
+      "MBA",
+      "MCA",
+      "BBA",
+      "BCA",
+      "B.Com (Hons)"
+    ],
+    "established": 1993,
+    "placementRate": "95.8%",
+    "logo": "/Images/logos/graphic-era-logo.png",
+    "satisfiedStudent": "96%",
+    "eligibility": "Graduation with min 50% for PG / 10+2 for UG",
+    "placementAssistance": "YES",
+    "payAfterPlacement": "NO",
+    "onlineClasses": "Live + Recorded Lectures",
+    "placementCompanies": "Adobe, Amazon, Atlassian, Google, Microsoft, Cognizant, Infosys, TCS, Wipro, Deloitte",
+    "studentRating": "4.8 / 5"
+  },
+  {
+    "id": "gla",
+    "name": "GLA University",
+    "location": "Mathura, Uttar Pradesh",
+    "fees": "₹24,250 / semester",
+    "ranking": "NIRF 101-125 MANAGEMENT, 151-200 OVERALL",
+    "accreditation": "NAAC A+ (3.46 CGPA), UGC 12B, AICTE, IACBE, WES",
+    "programs": [
+      "MBA",
+      "MCA",
+      "BBA",
+      "BCA",
+      "B.Com (Hons)",
+      "Certifications"
+    ],
+    "established": 1998,
+    "placementRate": "90%",
+    "logo": "/Images/logos/gla-logo.png",
+    "satisfiedStudent": "94%",
+    "eligibility": "Graduation with min 50% for PG / 10+2 for UG",
+    "placementAssistance": "YES",
+    "payAfterPlacement": "NO",
+    "onlineClasses": "Live + Recorded Lectures",
+    "placementCompanies": "Microsoft, Amazon, Capgemini, Accenture, TCS, Infosys, Wipro, Cognizant",
+    "studentRating": "4.7 / 5"
   }
 ]

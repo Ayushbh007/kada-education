@@ -30,6 +30,18 @@
 			href: '/Landingpage/IGNOU'
 		},
 		{
+			src: '/Images/logos/graphic-era-logo.png',
+			name: 'Graphic Era University',
+			tag: 'NAAC A+ • NIRF #48',
+			href: '/Landingpage/GraphicEra'
+		},
+		{
+			src: '/Images/logos/gla-logo.png',
+			name: 'GLA University',
+			tag: 'NAAC A+ • ₹60 LPA Peak',
+			href: '/Landingpage/GLA'
+		},
+		{
 			src: '/Images/logos/uttranchal-logo.png',
 			name: 'Uttaranchal University',
 			tag: 'NAAC A+ Grade',

@@ -31,7 +31,16 @@ const ALIASES: Record<string, string> = {
 	dypatil: 'dy-patil',
 	dypatiluniversity: 'dy-patil',
 	nmimsuniversity: 'nmims',
-	ignouuniversity: 'ignou'
+	ignouuniversity: 'ignou',
+	graphicera: 'graphic-era',
+	graphicerauniversity: 'graphic-era',
+	graphiceraindia: 'graphic-era',
+	geu: 'graphic-era',
+	geuonline: 'graphic-era',
+	gla: 'gla',
+	glauniversity: 'gla',
+	glaonline: 'gla',
+	glamathura: 'gla'
 };
 
 /** Look up a university's fee row by id (preferred) or by name. Always returns an object. */
