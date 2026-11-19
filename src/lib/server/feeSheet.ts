@@ -96,12 +96,16 @@ async function fetchSheet(url: string): Promise<FeeMap> {
 	return map;
 }
 
+// Default Google Sheet CSV URL (allows Vercel deployment on free tier without needing any dashboard env config)
+const DEFAULT_SHEET_CSV_URL =
+	'https://docs.google.com/spreadsheets/d/e/2PACX-1vSAAB0HybzhUZLo6OLfH5z3IannZ3Q0Dw9BDoqdbyb7H-9oJPpUjjT2ZRxiLZ1NPnvxBviqjpU4Pgc6/pub?output=csv';
+
 /**
  * Returns the fee data from the Google Sheet (cached for 5 minutes).
  * Never throws: on any error it returns the last good copy, or {} so pages use their built-in fees.
  */
 export async function getSheetFees(): Promise<FeeMap> {
-	const url = env.FEES_SHEET_CSV_URL;
+	const url = env.FEES_SHEET_CSV_URL || DEFAULT_SHEET_CSV_URL;
 	if (!url) return {};
 
 	if (cache && Date.now() - cache.at < cache.ttl) return cache.data;
