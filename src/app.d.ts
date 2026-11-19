@@ -4,7 +4,9 @@ declare global {
 	namespace App {
 		// interface Error {}
 		// interface Locals {}
-		// interface PageData {}
+		interface PageData {
+			fees?: import('$lib/fees').FeeMap;
+		}
 		// interface PageState {}
 		// interface Platform {}
 	}

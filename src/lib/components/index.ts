@@ -8,6 +8,19 @@ import Marquee from './Marquee.svelte';
 import UniversityCards from './UniversityCards.svelte';
 import Whatsapp from './Whatsapp.svelte';
 import Calling from './Calling.svelte';
+import Instagram from './Instagram.svelte';
 import ComparisonModal from './ComparisonModal.svelte';
 
-export { Navbar, Formpopup, HeroSection, HomeHeroSection, Footer, Marquee, UniversityCards, Whatsapp, Calling, ComparisonModal };
+export {
+	Navbar,
+	Formpopup,
+	HeroSection,
+	HomeHeroSection,
+	Footer,
+	Marquee,
+	UniversityCards,
+	Whatsapp,
+	Calling,
+	Instagram,
+	ComparisonModal
+};

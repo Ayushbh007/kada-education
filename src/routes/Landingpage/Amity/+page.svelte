@@ -3,6 +3,11 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import HeroSection from '$lib/components/HeroSection.svelte';
 	import { Formpopup } from '$components';
+	import { page } from '$app/stores';
+	import { getFee, pick } from '$lib/fees';
+
+	// Live fees from the Google Sheet (falls back to the values written in the markup)
+	$: fee = getFee($page.data.fees, 'amity');
 	import { onMount } from 'svelte';
 
 	let showForm = false;
@@ -22,7 +27,7 @@
 		// Handle the form submission
 	}
 
-	const shooliniImages = [
+	const amityImages = [
 		'/Images/amity/amity01.jpg',
 		'/Images/amity/amityuniversity.jpg',
 		'/Images/amity/amityuniversity2.jpg'
@@ -58,26 +63,29 @@
 
 <main class="flex min-h-screen flex-col">
 	<div class="relative">
-		<HeroSection images={shooliniImages}>
-			<div class="max-w-4xl px-4 text-center">
+		<HeroSection images={amityImages}>
+			<div class="max-w-3xl px-4 text-center">
 				<div
-					class="mb-4 inline-block rounded-full px-6 py-2 text-xl font-bold text-black shadow-lg"
+					class="mb-3 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold tracking-wider text-black uppercase shadow-md backdrop-blur-md"
 					style="background-color: #edcc13;"
 				>
 					PAY-AFTER-PLACEMENT
 				</div>
-				<h1 class="mb-4 text-4xl font-bold md:text-6xl">Online MBA</h1>
-				<p class="mb-2 text-2xl md:text-3xl">Master of Business Administration</p>
-				<p class="mb-6 text-3xl font-bold md:text-4xl" style="color: #edcc13;">
-					FROM INDIA'S NO. 1 PRIVATE UNIVERSITY
+				<h1 class="mb-2 text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+					Online MBA
+				</h1>
+				<p class="mb-2 text-base font-medium text-gray-200 sm:text-lg md:text-xl">
+					Master of Business Administration
 				</p>
-				<div class="mb-8 flex justify-center gap-4">
-					<!-- <img src="/Images/shoolini/THE-rankings-2025.png" alt="THE World University Rankings 2025" class="h-12" />
-          <img src="/Images/shoolini/QS-rankings-2025.png" alt="QS World University Rankings 2025" class="h-12" /> -->
-				</div>
+				<p
+					class="mb-6 text-sm font-bold tracking-wide uppercase sm:text-base"
+					style="color: #edcc13;"
+				>
+					Amity University Online
+				</p>
 				<button
 					on:click={openForm}
-					class="inline-block rounded-full px-8 py-3 text-lg font-medium text-white transition-colors duration-200 hover:bg-[#d4b312]"
+					class="inline-flex items-center gap-2 rounded-full px-7 py-2.5 text-sm font-bold text-black shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
 					style="background-color: #edcc13;"
 				>
 					Apply Now
@@ -245,7 +253,7 @@
 						</svg>
 					</div>
 					<h3 class="mb-2 font-bold">Fees</h3>
-					<p class="font-bold" style="color: #edcc13;">₹56,300</p>
+					<p class="font-bold" style="color: #edcc13;">{pick(fee.semester, '₹56,300')}</p>
 					<p class="text-sm text-gray-600">Per Semester</p>
 				</div>
 

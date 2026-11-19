@@ -2,6 +2,11 @@
 	import { Navbar, Footer } from '$components';
 	import { fade, fly } from 'svelte/transition';
 	import Formpopup from '$lib/components/modal/Formpopup.svelte';
+	import { page } from '$app/stores';
+	import { getFee, pick, feeSummary } from '$lib/fees';
+
+	// Live fees from the Google Sheet (by sheet ID). Falls back to the `fee` written below.
+	$: sheetFees = $page.data.fees;
 
 	// Form modal state
 	let showFormModal = false;
@@ -30,6 +35,7 @@
 	// University Programs Data
 	const universities = [
 		{
+			id: 'manipal-jaipur',
 			name: 'Manipal University',
 			logoUrl: '/Images/Manipalimages/manipal01.png',
 			rating: 4.8,
@@ -56,6 +62,7 @@
 			]
 		},
 		{
+			id: 'shoolini',
 			name: 'Shoolini University',
 			logoUrl: '/Images/shoolini/shoolini01.png',
 			rating: 4.9,
@@ -92,6 +99,7 @@
 			]
 		},
 		{
+			id: 'amity',
 			name: 'Amity University',
 			logoUrl: '/Images/amity/amity01.jpg',
 			rating: 4.7,
@@ -128,6 +136,7 @@
 			]
 		},
 		{
+			id: 'dy-patil',
 			name: 'DY Patil University',
 			logoUrl: '/Images/DY/dy1.jpg',
 			rating: 4.8,
@@ -156,6 +165,7 @@
 			]
 		},
 		{
+			id: 'lpu',
 			name: 'Lovely Professional University',
 			logoUrl: '/Images/LPU/lpu1.jpg',
 			rating: 4.6,
@@ -187,8 +197,9 @@
 			]
 		},
 		{
+			id: 'uttranchal',
 			name: 'Uttranchal University',
-			logoUrl: '/Images/Uttranchal/uttranchal1.jpg',
+			logoUrl: '/Images/Uttranchal/uttranchal1.png',
 			rating: 4.7,
 			reviews: 298,
 			duration: '2 Years',
@@ -242,6 +253,7 @@
 			<!-- University Cards Grid -->
 			<div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
 				{#each universities as university}
+					{@const live = getFee(sheetFees, university.id, university.name)}
 					<div
 						class="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:shadow-md"
 						transition:fade={{ duration: 300 }}
@@ -263,9 +275,25 @@
 								</div>
 								<div>
 									<span class="text-gray-500">Fee:</span>
-									<span class="ml-1 font-medium text-gray-700">{university.fee}</span>
+									<span class="ml-1 font-medium text-gray-700"
+										>{live.total ? live.total : feeSummary(live, university.fee)}</span
+									>
 								</div>
 							</div>
+							{#if live.emi || live.monthly}
+								<div class="mt-2 flex flex-wrap gap-2 text-xs">
+									{#if live.monthly}
+										<span class="rounded-full bg-orange-50 px-2 py-0.5 font-medium text-orange-700"
+											>{live.monthly} / month</span
+										>
+									{/if}
+									{#if live.emi}
+										<span class="rounded-full bg-emerald-50 px-2 py-0.5 font-medium text-emerald-700"
+											>{live.emi}</span
+										>
+									{/if}
+								</div>
+							{/if}
 						</div>
 
 						<!-- Content Area -->

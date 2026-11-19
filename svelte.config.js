@@ -8,7 +8,7 @@ const config = {
 	// for more information about preprocessors
 	preprocess: vitePreprocess(),
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({ runtime: 'nodejs20.x' }),
 		alias: {
 			$components: path.resolve('./src/lib/components/index.ts'),
 			$icons: path.resolve('./src/lib/icons/index.ts'),

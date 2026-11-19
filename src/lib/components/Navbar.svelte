@@ -24,8 +24,9 @@
 		{ label: 'Home', href: '/' },
 		{ label: 'About Us', href: '/Ourwhy' },
 		{ label: 'Programs', href: '/Program' },
-		{ label: 'Partner Universities', href: '/Compare' },
-		{ label: 'Contact Us', href: '/Faqs' }
+		{ label: 'Compare Universities', href: '/Compare' },
+		{ label: 'FAQ', href: '/Faqs' },
+		{ label: 'Contact Us', href: '/Contact' }
 	];
 </script>
 
@@ -58,12 +59,26 @@
 		<!-- Mobile Hamburger -->
 		<button class="hamburger" on:click={toggleMenu} aria-label="Toggle menu">
 			{#if !isMenuOpen}
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-					<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>
+				<svg
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+				>
+					<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" />
 				</svg>
 			{:else}
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-					<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round"/>
+				<svg
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+				>
+					<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" />
 				</svg>
 			{/if}
 		</button>
@@ -73,7 +88,9 @@
 	{#if isMenuOpen}
 		<div class="mobile-menu">
 			{#each navLinks as link}
-				<a href={link.href} class="mobile-link" on:click={() => isMenuOpen = false}>{link.label}</a>
+				<a href={link.href} class="mobile-link" on:click={() => (isMenuOpen = false)}
+					>{link.label}</a
+				>
 			{/each}
 			<button class="enquire-btn mobile-enquire" on:click={openForm}>Enquire Now</button>
 		</div>
@@ -213,7 +230,10 @@
 		font-size: 14.5px;
 		font-weight: 600;
 		cursor: pointer;
-		transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+		transition:
+			background 0.2s ease,
+			transform 0.15s ease,
+			box-shadow 0.2s ease;
 		white-space: nowrap;
 		letter-spacing: 0.1px;
 	}
@@ -286,4 +306,3 @@
 		}
 	}
 </style>
-

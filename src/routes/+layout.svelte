@@ -2,6 +2,7 @@
 	import '../app.css';
 	import Whatsapp from '$lib/components/Whatsapp.svelte';
 	import Calling from '$lib/components/Calling.svelte';
+	import Instagram from '$lib/components/Instagram.svelte';
 	import Formpopup from '$lib/components/modal/Formpopup.svelte';
 	// import favicon from '$lib/assets/favicon.svg';
 
@@ -115,14 +116,16 @@
 			"description": "Kada Education provides expert guidance for university admissions with specialized programs for Amity, Manipal, and Shoolini universities. Get personalized counseling and secure your academic future.",
 			"address": {
 				"@type": "PostalAddress",
-				"addressLocality": "New Delhi",
-				"addressRegion": "Delhi",
+				"streetAddress": "226, Canal Road, Kishanpur",
+				"addressLocality": "Dehradun",
+				"addressRegion": "Uttarakhand",
+				"postalCode": "248142",
 				"addressCountry": "IN"
 			},
 			"sameAs": [
-				"https://twitter.com/KadaEducation",
-				"https://www.facebook.com/KadaEducation",
-				"https://www.instagram.com/KadaEducation"
+				"https://www.facebook.com/profile.php?id=61581403942931",
+				"https://www.instagram.com/kadaeducation/",
+				"https://www.linkedin.com/company/kada-education"
 			]
 		}
 	</script>
@@ -161,6 +164,7 @@
 {@render children?.()}
 <Whatsapp />
 <Calling phoneNumber="+919220549335" />
+<Instagram />
 
 <!-- Form Popup Modal -->
 {#if showForm}
