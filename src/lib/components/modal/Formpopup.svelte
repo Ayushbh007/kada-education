@@ -1,5 +1,6 @@
 ﻿<script lang="ts">
 	import { createEventDispatcher } from 'svelte';
+	import { goto } from '$app/navigation';
 
 	const dispatch = createEventDispatcher<{
 		close: void;
@@ -99,14 +100,22 @@
 			const result = await response.json();
 
 			if (result.success) {
+				try {
+					if (typeof window !== 'undefined' && window.localStorage) {
+						localStorage.setItem('formpopup_auto_shown', 'true');
+					}
+				} catch (e) {}
+
 				// Dispatch success event
 				dispatch('submit', formData);
 
-				// Show confirmation modal
-				showConfirmation = true;
-
 				// Reset form
 				formData = { name: '', email: '', contactNo: '' };
+
+				// Close modal and navigate to dedicated tracking URL
+				modalVisible = false;
+				dispatch('close');
+				goto('/thank-you');
 			} else {
 				// Handle validation errors
 				if (result.error) {

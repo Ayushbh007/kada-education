@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Navbar, Footer } from '$components';
 	import { fade, slide } from 'svelte/transition';
+	import { goto } from '$app/navigation';
 
 	// Form data
 	let formData = {
@@ -98,6 +99,7 @@
 				university: 'Any / Need Guidance',
 				message: ''
 			};
+			goto('/thank-you');
 		} catch (err: any) {
 			console.error('Contact form submission error:', err);
 			submitSuccess = true;
